@@ -1,0 +1,187 @@
+<div class="wrapper">
+    <h1>Hello, World!!</h1>
+
+    <button (click)="getName(name)">Get my name</button>
+    <button (click)="myEvent('this is click event')">Click Me</button> <br><br>
+    <input type="text" #box (keyup.enter)="myEvent(box.value)" (blur)="myEvent('input 1 blur event')">
+    <br><br>
+    <p>Blur event</p>
+    <input type="text" #box (blur)="myEvent('blur event')">
+
+    <br><br>
+    <p>Mouse event</p>
+    <h1
+        (mouseover)="myEvent('mouse over event')"
+        style="background-color: slateblue;">
+        Hover over me
+    </h1>
+
+    <h1
+        (mouseleave)="myEvent('mouse leave event')"
+        style="background-color: red;">
+        Hover out me
+    </h1>
+
+    <h1>Get input box value on key change</h1>
+    <input type="text" #inputbox />
+    <button (click)="getVal(inputbox.value)">Get Value</button>
+    <h2>{{currentVal}}</h2>
+    <br>
+    <h1>Property Binding</h1>
+    <input type="text" [disabled]="disableBox" [value]="name" />
+    <br>
+    <h1>Interpolation</h1>
+    <input type="text" [disabled]="disableBox" value={{name}} />
+    <!-- 
+        interpolation we cannot bind the disabled function as but in property binding we can do that so 
+        for this we use property binding [disabled] not disabled
+    -->
+    <br><br>
+    <button (click)="enableBox()">Enable Textbox</button>
+    <br><br>
+    <h1>ng if - else condtioning</h1>
+    <br><br>
+    <h1 *ngIf="show=='yes' else elseBlock">
+        if Block
+    </h1>
+    <ng-template #elseBlock>
+        <h1>else Block</h1>
+    </ng-template>
+
+    <br>
+    <h1>ng if - else 2 condtioning</h1>
+    <br>
+
+    <h1 *ngIf="show=='yes';then ifBlock else elseBlock">
+    </h1>
+    <ng-template #ifBlock>
+        <h1>if Block</h1>
+    </ng-template>
+    <ng-template #elseBlock>
+        <h1>else Block</h1>
+    </ng-template>
+
+    <br>
+    <h1>ng if - else 3 condtioning with property binding</h1>
+    <br>
+
+    <ng-template [ngIf]="show=='red'">
+        <h1>Red Block</h1>
+    </ng-template>
+    <ng-template [ngIf]="show=='green'">
+        <h1>Green Block</h1>
+    </ng-template>
+    <ng-template [ngIf]="show=='blue'">
+        <h1>Blue Block</h1>
+    </ng-template>
+    <br><br>
+
+    <h1>Switch Case in Ng</h1>
+    <br>
+
+    <div [ngSwitch]="color">
+        <h2 style="color: red;" *ngSwitchCase="'red'">Red Color</h2>
+        <h2 style="color: green;" *ngSwitchCase="'green'">Green Color</h2>
+        <h2 style="color: blue;" *ngSwitchCase="'blue'">Blue Color</h2>
+        <h2 style="color: grey;" *ngSwitchDefault>Default Color</h2>
+    </div>
+
+    <br><br>
+    <h1>For loop in Ng</h1>
+    <br>
+    <h4 *ngFor="let item of data">
+        {{item}}
+    </h4>
+    <br>
+    <h1>For loop 2 in Ng</h1>
+    <br>
+    <table border="1">
+        <thead>
+            <td>Name</td>
+            <td>Age</td>
+            <td>Email</td>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of dataFor">
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+
+    <br>
+    <h1>Simple Form in Ng</h1>
+    <br>
+    <form #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
+        <input type="text" ngModel name="user" placeholder="Enter user name"/>
+        <br><br>
+        <input type="text" ngModel name="age" placeholder="Enter user age"/>
+        <br><br>
+        <input type="text" ngModel name="address" placeholder="Enter user address"/>
+        <br><br>
+        <input type="password" ngModel name="password" placeholder="Enter your password"/>
+        <br><br>
+        <button>Get User Values</button>
+    </form>
+    <br><br>
+    <h1>Style Binding</h1>
+    <h1 style="color: red;">Heading 1</h1>
+    <h1 [style.backgroundColor]="'#ff7675'" >Style Binding</h1>
+    <h1 [style.color]="headingColor"> Dynamic Binding</h1>
+    <h1 [style.color]="err?'red':'green'"> condtional Binding</h1>
+    <button (click)="updateColor()">Update Color</button>
+    <br><br>
+    <h1>Ng-bootstrap</h1>
+    <p>
+        <ngb-alert [dismissible]="false">
+          <strong>Warning!</strong> Better check yourself, you're not looking too good.
+        </ngb-alert>
+    </p>
+    <p *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
+    </p>
+    <p>
+    <button type="button" class="btn btn-primary" (click)="reset()">Reset</button>
+    </p>
+    <br><br>
+    <h1>Ng-bootstrap</h1>
+    <button mat-button color="primary">Angular Mat Button</button>
+    <button mat-flat-button color="primary">Primary</button>
+    <button mat-flat-button color="accent">Accent</button>
+    <button mat-flat-button color="warn">Warn</button>
+    <button mat-flat-button disabled>Disabled</button><br>
+    <mat-slider max="10" min="1"></mat-slider>
+    <br><br>
+    <h1>Passing Data from parent to child component</h1>
+    <div *ngFor="let data of dataUser">
+        <app-user-pto-cdata [hero]="data"></app-user-pto-cdata>
+    </div>
+    <br><br>
+    <app-user-cto-pdata (parentFunction)="parentFunction($event)" ></app-user-cto-pdata>
+    <br><br>
+    <div *ngIf="dataCtoP">
+        <h3>{{dataCtoP.name}}</h3>
+        <h3>{{dataCtoP.age}}</h3>
+    </div>
+    <br><br>
+    <h1>Pipes</h1>
+    <h3>{{name | uppercase }}</h3>
+    <h3>{{name | titlecase }}</h3>
+    <h3>{{name | lowercase }}</h3>
+    <h3>{{today | date}}</h3>
+    <h3>{{today | date:'fullDate'}}</h3>
+    <h3>{{str}}</h3>
+    <h3>{{str | slice:2:8}}</h3>
+    <h3>{{money| currency:'USD'}}</h3>
+    <h3>{{money| currency:'CAD'}}</h3>
+    <br><br>
+    <!-- <h2>{{title}}</h2>
+    <h2>{{name}}</h2>
+    <h2>{{getName()}}</h2>
+    <h2>{{obj.name}} {{obj.age}}</h2>
+    <h2>{{arr}}</h2>
+    <h2>{{siteUrl}}</h2> -->
+</div>

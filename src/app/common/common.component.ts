@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 interface Alert {
   type: string;
   message: string;
@@ -30,13 +31,20 @@ const ALERTS: Alert[] = [{
     message: 'This is a dark alert',
   }
 ];
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
 
-export class AppComponent {
+@Component({
+  selector: 'app-common',
+  templateUrl: './common.component.html',
+  styleUrls: ['./common.component.css']
+})
+export class CommonComponent implements OnInit {
+
+  constructor() { 
+    this.reset();
+  }
+
+  ngOnInit(): void {
+  }
   title = 'Ng Practice App';
   name = 'Shiv Raj Bhagat';
   getName(nameVar) {
@@ -97,10 +105,6 @@ export class AppComponent {
 
   alerts: Alert[];
 
-  constructor() {
-    this.reset();
-  }
-
   close(alert: Alert) {
     this.alerts.splice(this.alerts.indexOf(alert), 1);
   }
@@ -139,4 +143,5 @@ export class AppComponent {
 
   // arr = ["shiv", "raj", "bhagat"];
   // siteUrl = window.location.href;
+
 }
