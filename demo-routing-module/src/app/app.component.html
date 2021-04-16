@@ -1,4 +1,5 @@
-<h1 style="text-align: center;">Demo Routing Module</h1>
+<h1 style="text-align: center;">Demo Routing Module with lazy loading</h1>
+<a href="/">Home</a>
 <h2>Admin Pages</h2>
 <ul>
     <li>
@@ -18,3 +19,6 @@
     </li>
 </ul>
 <router-outlet></router-outlet>
+<h1>About and Contact page for lazy loading components</h1>
+<button (click)="loadAbout()">About Load</button><br><br>
+<button (click)="loadContact()">Contact Load</button>

@@ -5,7 +5,7 @@ import { UserRoutingModule } from './user-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
 
-
+console.warn("User Module Loaded");
 @NgModule({
   declarations: [
     LoginComponent,

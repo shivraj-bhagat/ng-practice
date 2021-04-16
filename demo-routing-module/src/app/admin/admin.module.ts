@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { ListComponent } from './list/list.component';
 
 
+console.warn("Admin Module Loaded");
 @NgModule({
   declarations: [
     LoginComponent,
