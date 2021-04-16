@@ -16,7 +16,9 @@ import { AdminComponent } from './admin/admin.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserPtoCDataComponent } from './user-pto-cdata/user-pto-cdata.component';
 import { CommonComponent } from './common/common.component';
-
+import { CustomStyleDirective } from './common/custom-style.directive';
+import { HttpClientModule } from '@angular/common/http';
+import { UsersDataModule } from './users-data/users-data.module'
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { CommonComponent } from './common/common.component';
     AdminComponent,
     PageNotFoundComponent,
     UserPtoCDataComponent,
-    CommonComponent
+    CommonComponent,
+    CustomStyleDirective,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,9 @@ import { CommonComponent } from './common/common.component';
     NgbModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatSliderModule
+    MatSliderModule,
+    HttpClientModule,
+    UsersDataModule
   ],
   providers: [],
   bootstrap: [AppComponent]

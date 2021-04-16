@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-interface Alert {
-  type: string;
-  message: string;
-}
+import { UsersService } from './users.service';
+import { ApiCallService } from './api-call.service';
+import { Alert, modelDataType } from './interface';
 
 const ALERTS: Alert[] = [{
     type: 'success',
@@ -39,8 +37,16 @@ const ALERTS: Alert[] = [{
 })
 export class CommonComponent implements OnInit {
 
-  constructor() { 
+  serviceData = {};
+  serviceApiData;
+  constructor(private user: UsersService, private apiData: ApiCallService) { 
     this.reset();
+    // console.warn(this.user.getServiceData());
+    this.serviceData = this.user.getServiceData();
+    this.apiData.getApiData().subscribe( apiData => {
+      // console.warn(apiData);
+      this.serviceApiData = apiData;
+    });
   }
 
   ngOnInit(): void {
@@ -136,6 +142,15 @@ export class CommonComponent implements OnInit {
   today = Date.now();
   str = "hello crownstack";
   money = 1000;
+
+  getModelData() {
+    const data: modelDataType = {
+      name: "shivraj",
+      id: 12,
+      employeed: true
+    }
+    return data;
+  }
   // obj = {
   //   name: 'hero',
   //   age: 20

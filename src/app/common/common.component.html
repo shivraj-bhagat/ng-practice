@@ -178,6 +178,45 @@
     <h3>{{money| currency:'USD'}}</h3>
     <h3>{{money| currency:'CAD'}}</h3>
     <br><br>
+    <h1>Custom Directives</h1>
+    <h2>Normal Heading</h2>
+    <h2 appCustomStyle>Custom Heading</h2>
+    <br><br>
+    <h1>Service in Angular</h1>
+    <div *ngIf="serviceData">
+        <h4>Name: {{serviceData.name}}</h4>
+        <h4>Id: {{serviceData.id}}</h4>
+        <h4>Age: {{serviceData.age}}</h4>
+    </div>
+    <br><br>
+    <h1>Calling api and showing response</h1>
+    <br>
+    <table border="1">
+        <thead>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Email</td>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of serviceApiData">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.email}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br><br>
+    <h1>Module and Routing</h1>
+    <ul>
+        <li>
+            <a routerLink="login">Go to login page</a>
+        </li>
+        <li>
+            <a routerLink="list">Go to list page</a>
+        </li>
+    </ul>
+    <!-- <app-login></app-login>
+    <app-users-list></app-users-list> -->
     <!-- <h2>{{title}}</h2>
     <h2>{{name}}</h2>
     <h2>{{getName()}}</h2>
