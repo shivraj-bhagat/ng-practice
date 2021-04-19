@@ -1,0 +1,16 @@
+<div class="top-bar">
+    <h1>Budget Calculator App</h1>
+</div>
+
+<div class="total-budget-section">
+    <h2 class="red">Rs. 1500</h2>
+</div>
+
+<div class="add-item-section">
+    <div class="add-item-container">
+        <app-add-item-form style="padding: 20px" (formSubmit)="addItem($event)"></app-add-item-form>
+    </div>
+</div>
+
+<hr style="margin-top: 0;">
+<app-budget-item-list></app-budget-item-list>
