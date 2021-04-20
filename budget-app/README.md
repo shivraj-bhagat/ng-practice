@@ -2,6 +2,11 @@
 
 <img src="./screenshot/1.png" width="100%">
 
+# 20th April, 2021
+
+<img src="./screenshot/2.png" width="100%">
+
+The budget app is completed with all of the functionality and one can able to create and maintian their budget.
 # BudgetApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
