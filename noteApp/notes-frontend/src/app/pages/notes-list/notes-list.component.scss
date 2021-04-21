@@ -1,0 +1,16 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 35%;
+    margin: auto;
+    padding-top: 25px;
+}
+
+.notes-list {
+    margin-top: 20px;
+}
+
+app-note-card {
+    display: block;
+    margin-bottom: 15px;
+}

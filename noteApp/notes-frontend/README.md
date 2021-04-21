@@ -1,5 +1,10 @@
 # NotesFrontend
 
+## 21st April, 2021
+<img src="./screenshot/1.png" width="100%">
+<br/><br/>
+<img src="./screenshot/2.png" width="100%">
+<br/><br/>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 
 ## Development server

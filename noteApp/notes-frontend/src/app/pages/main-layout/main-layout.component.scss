@@ -1,0 +1,36 @@
+@import '../../../main-style.scss';
+
+.layout-box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .page-content::-webkit-scrollbar {
+        display: none;
+    }
+
+    .page-content {
+        flex-grow: 1;
+        overflow-y: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+}
+
+.top-bar {
+    width: 100%;
+    background: linear-gradient(175deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+
+    h1 {
+        color: #fff;
+        font-size: 24px;
+        padding: 10px 0;
+    }
+}
