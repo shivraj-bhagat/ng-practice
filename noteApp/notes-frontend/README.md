@@ -5,6 +5,16 @@
 <br/><br/>
 <img src="./screenshot/2.png" width="100%">
 <br/><br/>
+<img src="./screenshot/3.png" width="100%">
+<br/><br/>
+<img src="./screenshot/4.png" width="100%">
+<br/><br/>
+<img src="./screenshot/5.png" width="100%">
+<br/><br/>
+<img src="./screenshot/6.png" width="100%">
+<br/><br/>
+<img src="./screenshot/7.png" width="100%">
+<br/><br/>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 
 ## Development server

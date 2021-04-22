@@ -1,11 +1,11 @@
-import { Component, ElementRef, Input, OnInit, Output, Renderer2, ViewChild, EventEmitter } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Output, Renderer2, ViewChild, EventEmitter, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-note-card',
   templateUrl: './note-card.component.html',
   styleUrls: ['./note-card.component.scss']
 })
-export class NoteCardComponent implements OnInit {
+export class NoteCardComponent implements OnInit, AfterViewInit {
 
   @Input() title: string;
   @Input() body: string;
@@ -13,12 +13,14 @@ export class NoteCardComponent implements OnInit {
 
   @Output('delete') deleteEvent: EventEmitter<void> = new EventEmitter<void>();
 
-  @ViewChild('truncator', {static: true}) truncator: ElementRef<HTMLElement>;
-  @ViewChild('bodyText', {static: true}) bodyText: ElementRef<HTMLElement>;
+  @ViewChild('truncator') truncator: ElementRef<HTMLElement>;
+  @ViewChild('bodyText') bodyText: ElementRef<HTMLElement>;
   constructor(private renderer: Renderer2) { }
 
-  ngOnInit() {
-    // console.log(this.container.nativeElement);
+  ngOnInit() { }
+
+  ngAfterViewInit() {
+    // console.log(this.truncator.nativeElement);
     let style = window.getComputedStyle(this.bodyText.nativeElement, null);
     let viewableHeight = parseInt(style.getPropertyValue("height"), 10);
     // console.log(viewableHeight,this.bodyText.nativeElement.scrollHeight)
