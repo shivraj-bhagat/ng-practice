@@ -16,10 +16,10 @@
         
         <div class="field is-grouped is-pulled-right">
             <div class="control">
-                <button class="button is-text is-small" type="button">Cancel</button>
+                <button class="button is-text is-small" type="button" (click)="onCancel()">Cancel</button>
             </div>
             <div class="control">
-                <button class="button is-primary is-small" type="submit" [disabled]="!noteForm.valid">Save</button>
+                <button class="button is-success is-small" type="submit" [disabled]="!noteForm.valid">Save</button>
             </div>
         </div>
     </form>
