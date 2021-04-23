@@ -10,6 +10,10 @@
           </div>
     </div>
 
+    <div #messageBox class="message-box">
+      <p></p>
+    </div>
+
     <div class="notes-list" [@listAnim]>
         <app-note-card 
           *ngFor="let note of filteredNotes"

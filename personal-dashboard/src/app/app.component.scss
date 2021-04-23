@@ -1,0 +1,44 @@
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: url('https://images.unsplash.com/photo-1617129759560-f33237741221?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&ixlib=rb-1.2.1&q=80&w=1920');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+}
+
+.top-section {
+    // background-color: aquamarine;
+    text-align: center;
+    padding: 30px 0;
+
+    h1 {
+        font-size: 120px;
+        font-weight: 600;
+        color: #f5f5f5;
+        text-shadow: 0px 1px 7px rgba(black, 0.1);
+    }
+
+    h2 {
+        font-size: 28px;
+        color: #fff;
+        text-shadow: 0px 1px 4px rgba(black, 0.1);
+    }
+}
+
+.content-section {
+    // background-color: cadetblue;
+    flex-grow: 1;
+}
+
+.bottom-section {
+    // background-color: coral;
+    display: flex;
+
+    app-tabs {
+        margin: auto;
+    }
+}

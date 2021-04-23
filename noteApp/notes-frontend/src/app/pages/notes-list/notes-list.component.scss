@@ -6,6 +6,14 @@
     max-width: 35%;
     margin: auto;
     padding-top: 25px;
+
+    .message-box {
+        color: $purple;
+        text-align: center;
+        padding-top: 10px;
+        font-size: 18px;
+        font-weight: 500;
+    }
 }
 
 .notes-list {

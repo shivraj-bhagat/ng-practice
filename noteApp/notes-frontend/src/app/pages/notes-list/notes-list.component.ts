@@ -1,5 +1,5 @@
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Note } from 'src/app/shared/note.model';
 import { NotesService } from 'src/app/shared/notes.service';
 
@@ -70,14 +70,14 @@ import { NotesService } from 'src/app/shared/notes.service';
   ]
 })
 
-export class NotesListComponent implements OnInit {
+export class NotesListComponent implements OnInit, AfterViewInit {
 
   notes: Note[] = new Array<Note>();
   filteredNotes: Note[] = new Array<Note>();
 
   @ViewChild('filterInput') filterInputElRef: ElementRef<HTMLInputElement>;
-
-  constructor(private noteService: NotesService) { }
+  @ViewChild('messageBox', {static: true}) messageBox;
+  constructor(private noteService: NotesService, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     // reterive all note service
@@ -86,11 +86,16 @@ export class NotesListComponent implements OnInit {
     this.filter('');
   }
 
+  ngAfterViewInit() {
+    this.show(0);
+  }
+
   deleteNote(note: Note) {
     let noteId = this.noteService.getId(note);
     this.noteService.delete(noteId);
     // console.log(this.filterInputElRef.nativeElement.value);
     this.filter(this.filterInputElRef.nativeElement.value);
+    this.show(0);
   }
 
   generateNoteURL(note: Note) {
@@ -113,6 +118,7 @@ export class NotesListComponent implements OnInit {
 
     let uniqueResults = this.removeDuplicates(allResults);
     this.filteredNotes = uniqueResults;
+    this.show(query.length);
 
     // sort by relevent
     this.sortByRelevency(allResults);
@@ -166,6 +172,19 @@ export class NotesListComponent implements OnInit {
 
       return bCount - aCount;
     })
+  }
+
+  show(flag) {
+    if(this.notes.length == 0 && !flag) {
+      this.messageBox.nativeElement.children[0].innerHTML = "Please add some notes";
+      this.renderer.setStyle(this.messageBox.nativeElement, 'display', 'block');
+    }else if(this.filteredNotes.length == 0 && flag) {
+      this.messageBox.nativeElement.children[0].innerHTML = "Search result not found";
+      this.renderer.setStyle(this.messageBox.nativeElement, 'display', 'block');
+    }
+     else {
+      this.renderer.setStyle(this.messageBox.nativeElement, 'display', 'none');
+    }
   }
 
 }
