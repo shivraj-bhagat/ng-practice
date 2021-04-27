@@ -2,14 +2,9 @@
     <div class="container">
         <div class="notes-list">
 
-            <div class="note-card">
-                <div class="note-card-title">
-                    this is title
-                </div>
-                <div class="note-card-content">
-                    i am here content
-                </div>
-            </div>
+            <a [routerLink]="note.id" *ngFor="let note of notes">
+                <app-note-card [note]="note"></app-note-card>
+            </a>
 
         </div>
 

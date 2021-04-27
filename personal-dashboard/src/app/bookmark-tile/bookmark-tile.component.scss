@@ -28,6 +28,14 @@
         max-width: 32px;
     }
 
+    .tile-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        width: 32px;
+    }
+
     .tile-text {
         font-size: 14px;
         color: rgba( white, 0.85);

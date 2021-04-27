@@ -1,27 +1,22 @@
+
+.notes-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
 .notes-wrapper {
     height: 100%;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-.note-card {
-    background-color: rgba(black, 0.5);
-    color: rgba(white,0.95);
-    padding: 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: 0.1s;
 
-    &:hover {
-        background-color: rgba(black, 0.68);
-        backdrop-filter: blur(2px);
-    }
+.add-btn i {
+    margin-right: 5px;
+    margin-left: -3px;
+}
 
-    .note-card-title {
-        font-size: 20px;
-        font-weight: 600;
-    }
-
-    .note-card-content {
-        margin-top: 7px;
-    }
+app-note-card {
+    display: block;
+    margin-bottom: 10px;
 }
