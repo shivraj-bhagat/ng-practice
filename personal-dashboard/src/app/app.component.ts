@@ -1,6 +1,8 @@
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Observable, timer } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const baseStyle = style({
   // display: 'block',
@@ -184,12 +186,24 @@ const baseStyle = style({
     ]),
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
   backgrounds: string[] = [
     'https://images.unsplash.com/photo-1617561064731-9df3272cc546?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=1080&ixlib=rb-1.2.1&q=80&w=1920',
   ];
   loadingBGImage: boolean;
+
+  dateTime: Observable<Date>;
+  ngOnInit() {
+    // this.dateTime = new Date();
+    this.dateTime = timer(0, 1000).pipe(
+      map(() => {
+        return new Date()
+      })
+    )
+  }
+
+
   prepareRoute(outlet: RouterOutlet) {
     if (outlet.isActivated) {
       const tab =  outlet.activatedRouteData['tab'];
