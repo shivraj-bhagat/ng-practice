@@ -6,6 +6,7 @@
 html {
     font-family: 'Inter', sans-serif;
     color: #222;
+    overflow: hidden;
 }
 
 html, body {
@@ -83,6 +84,14 @@ a {
 
 .form-field {
     margin-bottom: 20px;
+
+    label.form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        font-family: inherit;
+        color: rgba(black, 0.8);
+    }
 }
 
 .textbox, .textarea {
