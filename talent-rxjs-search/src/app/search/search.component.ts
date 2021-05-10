@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Subject, throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged, switchMap, catchError } from "rxjs/operators";
 import { SearchService } from '../shared/search.service';
 
@@ -9,31 +9,35 @@ import { SearchService } from '../shared/search.service';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit, OnDestroy{
-
-  constructor(private searchService: SearchService) { }
+export class SearchComponent implements OnInit{
 
   public loading: Boolean;
-  public searchTerm = new Subject<string>();
   public searchResults: any;
   public paginationElements: any;
   public errorMessage: any;
+
+  constructor(private searchService: SearchService) { }
   
   public searchForm = new FormGroup({
     search: new FormControl("", Validators.required)
   })
 
   public search() {
-    this.searchTerm.pipe(
-      map((e: any) => {
-        // console.log(e.target.value);
-        return e.target.value;
+    this.searchForm.get("search").valueChanges.pipe(
+      map((term: any) => {
+        // console.log(term);
+        // return e.target.value;
+        return term;
       }),
       debounceTime(500),
       distinctUntilChanged(),
       switchMap(term => {
         this.loading = true;
-        return this.searchService._searchEntries(term)
+        if(term == '') {
+          return of(null);
+        } else {
+          return this.searchService._searchEntries(term)
+        }
       }),
       catchError((err) => {
         console.log(err);
@@ -51,9 +55,4 @@ export class SearchComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.search();
   }
-
-  ngOnDestroy() {
-    this.searchTerm.unsubscribe();
-  }
-
 }

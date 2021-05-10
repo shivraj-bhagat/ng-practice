@@ -1,7 +1,7 @@
 <section>
     <form [formGroup]="searchForm">
         <label>
-            <input type="text" (keyup)="searchTerm.next($event)" formControlName="search" placeholder="Search Repos...">
+            <input type="text" formControlName="search" placeholder="Search Repos...">
 
             <div *ngIf="loading">
                 <p class="search-message">Searching</p>

@@ -14,11 +14,22 @@ export class MainPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    const items = (() => {
+      const fieldValue = localStorage.getItem('budgetItems');
+      return fieldValue === null
+        ? []
+        : JSON.parse(fieldValue);
+    })();
+    this.budgetItems = items;
+    this.budgetItems.forEach((items) => {
+      this.totalBudget += items.amount;
+    })
   }
 
   addItem(newItem: BudgetItem) {
     this.budgetItems.push(newItem);
     this.totalBudget += newItem.amount;
+    localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
   }
 
   deleteItem(item: BudgetItem) {
@@ -26,11 +37,13 @@ export class MainPageComponent implements OnInit {
     // console.log(item)
     this.budgetItems.splice(index,1);
     this.totalBudget -= item.amount;
+    localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
   }
 
   updateItem(updateEvent : UpdateEvent) {
     this.budgetItems[this.budgetItems.indexOf(updateEvent.old)] = updateEvent.new;
     this.totalBudget -= updateEvent.old.amount;
     this.totalBudget += updateEvent.new.amount;
+    localStorage.setItem('budgetItems', JSON.stringify(this.budgetItems));
   }
 }
