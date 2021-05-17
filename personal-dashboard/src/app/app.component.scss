@@ -15,10 +15,10 @@
 .top-section {
     // background-color: aquamarine;
     text-align: center;
-    padding: 30px 0;
+    padding: 10px 0;
 
     h1 {
-        font-size: 120px;
+        font-size: 100px;
         font-weight: 600;
         color: #f5f5f5;
         text-shadow: 0px 1px 7px rgba(black, 0.1);
@@ -42,7 +42,7 @@
     display: flex;
 
     app-tabs {
-        margin: auto;
+        margin: 10px auto;
     }
 }
 
